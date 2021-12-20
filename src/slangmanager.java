@@ -88,33 +88,77 @@ public class slangmanager {
             System.out.print(history.get(i) + "\n");
         }
    }
-   public static void save_file_hashmap(String file ,HashMap<String,List<String>> h ){
+   public static void save_file_hashmap(String file ,  HashMap<String,List<String>> h ){
        List<String> b = new ArrayList<String>();
-
        try (BufferedWriter bw = new BufferedWriter(new FileWriter(new File(file)))) {
-
-
            List<String> array = new ArrayList<>();
            for (String i: list.keySet()) {
-               bw.write(i +" ` ");
+               bw.write(i +"`");
                array= list.get(i);
                if(array.size()==1){
-                   bw.write(array.get(0)+"|");
+                   bw.write(array.get(0));
                }
                else{
                    for(int j=0;j<array.size();++j){
                        if(j+1==array.size())
-                           
-                       bw.write(array.get(j)+"|");
-
+                           bw.write(array.get(j));
+                       else
+                           bw.write(array.get(j)+"|");
                    }
                }
-
+               bw.newLine();
            }
+           bw.close();
        } catch (IOException e) {
+           System.out.print("Update fail!!!");
            e.printStackTrace();
        }
    }
+
+   public static void savefile_list() {
+        save_file_hashmap(File_save, list);
+    }
+
+    public static int Input(){
+        Scanner scanner = new Scanner(System.in);
+        while(true){
+            int m=scanner.nextInt();
+            if (m!=1 && m!=0)
+                System.out.print("please re-enter:");
+            else
+                return m;
+        }
+    }
+    public static int Input1(){
+        Scanner scanner = new Scanner(System.in);
+        while(true){
+            int m=scanner.nextInt();
+            if (m!=1 && m!=2 )
+                System.out.print("please re-enter:");
+            else
+                return m;
+        }
+    }
+    public static int Input2(){
+        Scanner scanner = new Scanner(System.in);
+        while(true){
+            int m=scanner.nextInt();
+            if (m!=1 && m!=2 && m!=3 )
+                System.out.print("please re-enter:");
+            else
+                return m;
+        }
+    }
+    public static String Input3(){
+        Scanner scanner = new Scanner(System.in);
+        while(true){
+            String m=scanner.nextLine();
+            if (!m.equals("1") && !m.equals("2") && !m.equals("3") && !m.equals("4") )
+                System.out.print("please re-enter:");
+            else
+                return m;
+        }
+    }
    public static void add_slangword(){
        Scanner scanner = new Scanner(System.in);
        System.out.print("Enter new slangword: \n");
@@ -123,11 +167,12 @@ public class slangmanager {
        List<String> list_defi =new ArrayList<>();
        while(n!=0){
            System.out.print("Enter new definition: \n");
+
            String defi = scanner.nextLine();
            list_defi.add(defi);
-           System.out.print("Do you want to add mỏe definition? (yes=1 , no=0)");
+           System.out.print("Do you want to add more definition? (yes=1 , no=0)");
            {
-               int m=scanner.nextInt();
+               int m = Input();
                if(m==1){
                    n=1;
                }
@@ -138,10 +183,140 @@ public class slangmanager {
        if(list.containsKey(slangnew)){
            System.out.print("I'm sorry slang word existed :( !!!\n");
            System.out.print("You want overwrite or duplicate\n");
-           System.out.print("    1-overwrite\n");
-           System.out.print("    2- duplicate\n");
-           int choice=scanner.nextInt();
-           if(choice==1){
+           System.out.print("         1-duplicate           \n");
+           System.out.print("         2- overwrite          \n");
+
+           int choice=Input1();
+           switch (choice) {
+               case 1 :
+                   updateslang(slangnew, list_defi, true);
+                   System.out.print("Add new slang success ");
+
+                   break;
+               case 2 :
+                   list.put(slangnew, list_defi);
+                   System.out.print("Add new slang success ");
+
+                   savefile_list();
+                   break;
+           }
+       }
+       else{
+           System.out.print("Add new slang success ");
+           updateslang(slangnew,list_defi,false);
+       }
+
+   }
+   public static void updateslang(String slang , List<String> list_defi , boolean check){
+        if(check==true){
+            List<String> defi=list.get(slang);
+            for (String j:defi)
+            {
+                list_defi.add(j);
+            }
+            list.put(slang,list_defi);
+        }else{
+            list.put(slang,list_defi);
+        }
+       savefile_list();
+   }
+   public static  void edit_slangword(){
+       Scanner scanner = new Scanner(System.in);
+       System.out.print("Enter slangword edit: \n");
+       String slangnew = scanner.nextLine();
+       int n=1;
+       List<String> list_defi =new ArrayList<>();
+       if(!list.containsKey(slangnew)){
+           System.out.print("Not found slang\n");
+       }
+       else{
+           list_defi=list.get(slangnew);
+           System.out.print("Slang word: "+ slangnew +"\n");
+           for(String j:list_defi){
+               System.out.print("Definition: " + j +"\n");
+           }
+           System.out.print("************ EDIT SLANG ************\n");
+           System.out.print("*      1: Edit slangword           *\n");
+           System.out.print("*      2: Edit Definition          *\n");
+           System.out.print("*      3: Exit                     *\n");
+           System.out.print("************************************\n");
+           System.out.print("You choice");
+           int choice =Input2();
+           switch (choice) {
+               case 1:
+                   System.out.print("Enter slang new: \n");
+                   String new_slang=scanner.nextLine();
+                   list.put(new_slang,list_defi);
+                   savefile_list();
+                   break;
+               case 2:
+                   System.out.print("************ EDIT DEFINITION ************\n");
+                   System.out.print("*      1: Edit Definition               *\n");
+                   System.out.print("*      2: Add Definition new            *\n");
+                   System.out.print("*      3: Change Definition new         *\n");
+                   System.out.print("*      4: Exit                          *\n");
+                   System.out.print("*****************************************\n");
+                   System.out.print("You choice");
+                   String choice1=Input3();
+                   List<String> list_defi1 =new ArrayList<>();
+                   String defi=null;
+                   int m;
+                   int check=1;
+                   int check1=1;
+                   switch (choice1){
+                       case "1":
+                           break;
+                       case "2":
+                           while(check!=0){
+                               System.out.print("Enter new definition: \n");
+
+                               defi = scanner.nextLine();
+                               list_defi1.add(defi);
+                               System.out.print("Do you want to add more definition? (yes=1 , no=0)");
+                               {
+                                   m = Input();
+                                   if(m==1){
+                                       check=1;
+                                   }
+                                   else
+                                       check=0;
+                               }
+                           }
+                           if(list.containsKey(slangnew)){
+                               updateslang(slangnew, list_defi1, true);
+                               savefile_list();
+                               System.out.print("success !!!!!!!!!! ");
+
+                           }
+                           break;
+                       case "3":
+                           while(check1!=0){
+                               System.out.print("Enter new definition: \n");
+
+                               defi = scanner.nextLine();
+                               list_defi1.add(defi);
+                               System.out.print("Do you want to add more definition? (yes=1 , no=0)");
+                               {
+                                   m = Input();
+                                   if(m==1){
+                                       check1=1;
+                                   }
+                                   else
+                                       check1=0;
+                               }
+                           }
+                           if(list.containsKey(slangnew)){
+                               list.put(slangnew,list_defi1);
+                               savefile_list();
+                               System.out.print("success !!!!!!!!!! ");
+
+                           }
+                           break;
+                       case "4":
+                           break;
+                   }
+               case 3:
+                   break;
 
            }
        }
