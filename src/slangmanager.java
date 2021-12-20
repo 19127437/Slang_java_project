@@ -9,9 +9,10 @@ import java.io.*;
 public class slangmanager {
 
     public static HashMap<String,List<String>> list=new HashMap<String,List<String>>();
-    public static List<String> history = new ArrayList<>();
     public static final String File_Name="slang.txt";
     public static final String File_save ="fixslang.txt";
+    public static final String File_history="history.txt";
+    public static final String File_root ="slangroot.txt";
 
     public static void Load_Data_Slangword(){
 
@@ -51,7 +52,6 @@ public class slangmanager {
        }
    }
    public static void Find_slang(String name){
-        history.add(name);
         List<String> defi = list.get(name);
         if(defi==null){
             System.out.print("Can not find definition: please re-enter!! \n" );
@@ -82,11 +82,47 @@ public class slangmanager {
            }
        }
    }
-   public static void Get_history(){
-        System.out.print("History\n");
-        for(int i=0;i<history.size();i++){
-            System.out.print(history.get(i) + "\n");
+    public static void savehistory(boolean check, String str){
+        String save = null;
+        if (check)
+            save = "Slangword: " + str;
+        else {
+            save = "Definition: " + str;
         }
+        savefile(File_history, save);
+    }
+    public static void savefile(String file_save , String value){
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(new File(file_save)))) {
+            bw.write(value);
+            bw.newLine();
+        }catch (IOException e) {
+            System.out.print("Update fail!!!");
+            e.printStackTrace();
+        }
+    }
+   public static void Get_history(){
+       List<String> arr = new ArrayList<>();
+       try(BufferedReader br = new BufferedReader(new FileReader(new File(File_history)))) {
+           String str=null;
+           while (true) {
+               str = br.readLine();
+               if (str == null) {
+                   System.out.print("No data");
+                   break;
+               }
+               arr.add(str);
+
+           }
+       }
+       catch (FileNotFoundException e) {
+           e.printStackTrace();
+       } catch (IOException e) {
+           e.printStackTrace();
+       }
+           for (int i = 0; i < arr.size(); i++) {
+               System.out.print(arr.get(i) + "\n");
+           }
+
    }
    public static void save_file_hashmap(String file ,  HashMap<String,List<String>> h ){
        List<String> b = new ArrayList<String>();
@@ -134,6 +170,16 @@ public class slangmanager {
         while(true){
             int m=scanner.nextInt();
             if (m!=1 && m!=2 )
+                System.out.print("please re-enter:");
+            else
+                return m;
+        }
+    }
+    public static String  Input11(){
+        Scanner scanner = new Scanner(System.in);
+        while(true){
+            String m=scanner.nextLine();
+            if (!m.equals("1") && !m.equals("2"))
                 System.out.print("please re-enter:");
             else
                 return m;
@@ -224,6 +270,7 @@ public class slangmanager {
        Scanner scanner = new Scanner(System.in);
        System.out.print("Enter slangword edit: \n");
        String slangnew = scanner.nextLine();
+       savehistory(true,slangnew);
        int n=1;
        List<String> list_defi =new ArrayList<>();
        if(!list.containsKey(slangnew)){
@@ -265,6 +312,8 @@ public class slangmanager {
                    int check1=1;
                    switch (choice1){
                        case "1":
+                           updatedefi(slangnew,list_defi);
+
                            break;
                        case "2":
                            while(check!=0){
@@ -322,7 +371,104 @@ public class slangmanager {
        }
 
    }
+   public static void updatedefi(String slangnew,List<String> list_defi){
+       Scanner scanner = new Scanner(System.in);
+       int count=1;
+       for(String j:list_defi){
+           System.out.print("   "+ count +" "+j +"\n");
+           count=count+1;
+       }
+       while(true){
+           int choice2;
+           System.out.print("You choice : \n");
+           choice2= scanner.nextInt();
+           if (choice2 > list_defi.size() || choice2 <0 )
+               System.out.print("please re-enter:");
+           else {
+               System.out.print("You enter definition: ");
+               String defi;
+               String defiii=scanner.nextLine();
+               defi = scanner.nextLine();
+               List<String> list_defi1 = new ArrayList<>();
+               int count1 = 1;
+               for (String n : list_defi) {
+                   if (count1 == choice2)
+                       list_defi1.add(defi);
+                   else
+                       list_defi1.add(n);
+                   count1 = count1 + 1;
+               }
+               list.put(slangnew, list_defi1);
+               list_defi=list_defi1;
+           }
+           System.out.print("continue?? (Yes= y | No= n)");
+           String cont = scanner.nextLine();
+           if (cont.equals("y") || cont.equals("Y")) {
+               continue;
+           }
+           else
+               break;
+
+       }
+       savefile_list();
+   }
+   public static void deleteslangword(){
+       Scanner scanner = new Scanner(System.in);
+       String slangnew;
+       System.out.print("Enter slangword delete: \n");
+       slangnew= scanner.nextLine();
+       savehistory(true,slangnew);
+       if(!list.containsKey(slangnew)){
+           System.out.print("Not found slang\n");
+       }
+       else{
+            System.out.print("*--------You want delete?--------*\n");
+            System.out.print("*             1-yes              *\n");
+            System.out.print("*             2-no               *\n");
+            System.out.print("*---------------------------------\n");
+            System.out.print("You choice: ");
+            String input= Input11();
+            switch (input){
+                case "1":
+                    list.remove(slangnew);
+                    savefile_list();
+                    System.out.print("You have successfully deleted !!!!");
+                    break;
+                case "2":
+                    break;
+            }
+       }
+
+   }
+   public static void reset(){
+        list.clear();
+       List<String> arr = new ArrayList<>();
+       try(BufferedReader br = new BufferedReader(new FileReader(new File(File_root)))) {
+           String str=null;
+           while (true) {
+               str = br.readLine();
+               if (str == null)
+                   break;
+               arr.add(str);
+
+           }
+       }
+       catch (FileNotFoundException e) {
+           e.printStackTrace();
+       } catch (IOException e) {
+           e.printStackTrace();
+       }
+       for(int i=0;i<arr.size();i++){
+           if(arr.get(i).contains("`")) {
+               String[] array = arr.get(i).split("`");
+               String[] array_defi = array[1].split("\\|");
+               List<String> defi = Arrays.asList(array_defi);
+               list.put(array[0], defi);
+           }
+       }
+       System.out.print(list.size());
 
 
+   }
 
 }
