@@ -1,10 +1,15 @@
 
 
+import jdk.jshell.execution.Util;
+
 import java.io.BufferedReader;
+import java.util.Collections;
 import java.io.FileReader;
 import java.io.File;
 import java.util.*;
 import java.io.*;
+
+
 
 public class slangmanager {
 
@@ -205,7 +210,7 @@ public class slangmanager {
                 return m;
         }
     }
-   public static void add_slangword(){
+    public static void add_slangword(){
        Scanner scanner = new Scanner(System.in);
        System.out.print("Enter new slangword: \n");
        String slangnew = scanner.nextLine();
@@ -253,7 +258,7 @@ public class slangmanager {
        }
 
    }
-   public static void updateslang(String slang , List<String> list_defi , boolean check){
+    public static void updateslang(String slang , List<String> list_defi , boolean check){
         if(check==true){
             List<String> defi=list.get(slang);
             for (String j:defi)
@@ -266,7 +271,7 @@ public class slangmanager {
         }
        savefile_list();
    }
-   public static  void edit_slangword(){
+    public static  void edit_slangword(){
        Scanner scanner = new Scanner(System.in);
        System.out.print("Enter slangword edit: \n");
        String slangnew = scanner.nextLine();
@@ -371,7 +376,7 @@ public class slangmanager {
        }
 
    }
-   public static void updatedefi(String slangnew,List<String> list_defi){
+    public static void updatedefi(String slangnew,List<String> list_defi){
        Scanner scanner = new Scanner(System.in);
        int count=1;
        for(String j:list_defi){
@@ -412,7 +417,7 @@ public class slangmanager {
        }
        savefile_list();
    }
-   public static void deleteslangword(){
+    public static void deleteslangword(){
        Scanner scanner = new Scanner(System.in);
        String slangnew;
        System.out.print("Enter slangword delete: \n");
@@ -440,7 +445,7 @@ public class slangmanager {
        }
 
    }
-   public static void reset(){
+    public static void reset(){
         list.clear();
        List<String> arr = new ArrayList<>();
        try(BufferedReader br = new BufferedReader(new FileReader(new File(File_root)))) {
@@ -470,5 +475,48 @@ public class slangmanager {
 
 
    }
+    public  static String getrandom(){
+        Random r = new Random();
+        int k = r.nextInt(list.size());
+        String kw= (String)list.keySet().toArray()[k];
+        return kw;
+    }
+    public static void random(){
+        System.out.print(">> Slang word random: \n");
+        String slang=getrandom();
+        System.out.print("Slang word: "+ slang +"\n");
+        for(String j: list.get(slang) ){
+            System.out.print("Definition: "+ j +"\n");
+        }
+    }
+    public static void Question(){
+
+        //String random=getrandom();
+        String random="BAC";
+        Random r = new Random();
+        List<String> Ans= list.get(random);
+
+        int index = r.nextInt(Ans.size());
+        String Answer = Ans.get(index);
+        List<String> list_question=new ArrayList<>();
+        int check=0;
+        while(check<3){
+            String slangnew = getrandom();
+            if(!slangnew.equals(random)) {
+                List<String> new_Ans = list.get(slangnew);
+                String Answer_1 = new_Ans.get(r.nextInt(new_Ans.size()));
+                check=check+1;
+                list_question.add(Answer_1);
+            }
+            if(check==3)
+                break;
+        }
+        list_question.add(Answer);
+        Collections.shuffle(list_question);
+        for(int i = 0; i < list_question.size(); i++) {
+            System.out.println(i + " - " + list_question.get(i));
+        }
+
+    }
 
 }

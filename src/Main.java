@@ -8,7 +8,7 @@ public class Main {
 
         slangmanager.Load_Data_Slangword();
 //        slangmanager.save_file_hashmap(slangmanager.File_save , slangmanager.list);
-         slangmanager.reset();
+         slangmanager.Question();
         int n=4;
 //        while(n!=0) {
 //
@@ -17,7 +17,7 @@ public class Main {
 //            slangmanager.Find_Definition(name);
 //            n=n-1;
 //        }
-        slangmanager.Get_history();
+//        slangmanager.Get_history();
 
         //slangmanager.Get_history();
     }
