@@ -8,6 +8,8 @@ public class Main {
 
         slangmanager.Load_Data_Slangword();
 //        slangmanager.save_file_hashmap(slangmanager.File_save , slangmanager.list);
+//        System.out.print("Nhập tên slang: \n");
+//           String name = scanner.nextLine();
          slangmanager.Question();
         int n=4;
 //        while(n!=0) {

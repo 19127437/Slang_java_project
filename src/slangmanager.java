@@ -72,7 +72,7 @@ public class slangmanager {
         List<String> array = new ArrayList<>();
        for (String i: list.keySet()) {
            for(int j=0;j<list.get(i).size();++j){
-               if(list.get(i).get(j).contains(name)){
+               if(list.get(i).get(j).startsWith(name)){
                    array.add(i);
                }
            }
