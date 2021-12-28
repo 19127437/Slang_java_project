@@ -1,3 +1,6 @@
+
+package  Dict_19127437;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
