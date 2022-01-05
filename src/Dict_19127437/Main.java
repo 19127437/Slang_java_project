@@ -9,11 +9,11 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        slangmanager.Load_Data_Slangword();
+//        slangmanager.Load_Data_Slangword();
 //        slangmanager.save_file_hashmap(slangmanager.File_save , slangmanager.list);
 //        System.out.print("Nhập tên slang: \n");
 //           String name = scanner.nextLine();
-         slangmanager.Question();
+//         slangmanager.Find_Definition(name);
         int n=4;
 //        while(n!=0) {
 //
@@ -25,5 +25,6 @@ public class Main {
 //        slangmanager.Get_history();
 
         //slangmanager.Get_history();
+        new GUI_19127437_slangword().setVisible(true);
     }
 }
