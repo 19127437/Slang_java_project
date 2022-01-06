@@ -107,11 +107,12 @@ public class GUI_FinDefi extends javax.swing.JFrame {
         if (jTextField1.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "vui lòng điền slang");
         }else{
-
+            slangmanager.Load_Data_Slangword();
             tableModel.setRowCount(0);
             HashMap<String, List<String>> list=new HashMap<String,List<String>>();
             list= slangmanager.Load_Slangword();
             String name = jTextField1.getText();
+            slangmanager.savehistory(false, name);
             List<String> array = new ArrayList<>();
             array = slangmanager.Find_Definition(name);
             if(array.isEmpty()){
