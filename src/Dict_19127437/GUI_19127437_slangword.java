@@ -111,6 +111,11 @@ public class GUI_19127437_slangword extends javax.swing.JFrame {
         });
 
         jButton10.setText("Quiz2");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -219,6 +224,11 @@ public class GUI_19127437_slangword extends javax.swing.JFrame {
         // TODO add your handling code here:
         new GUI_Quiz1().setVisible(true);
        
+    }//GEN-LAST:event_jButton9ActionPerformed
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        // TODO add your handling code here:
+        new GUI_Quiz2().setVisible(true);
+
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
