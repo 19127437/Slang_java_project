@@ -4,14 +4,24 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Scanner;
 
-
-public class GUI_Findslang extends javax.swing.JFrame {
+public class GUI_Delete extends javax.swing.JFrame {
     DefaultTableModel tableModel;
 
-    public GUI_Findslang() {
+    public GUI_Delete() {
         initComponents();
         tableModel = (DefaultTableModel) jTable1.getModel();
+        slangmanager.Load_Data_Slangword();
+        HashMap<String, List<String>> list=new HashMap<String,List<String>>();
+        list= slangmanager.list;
+        for (String i: list.keySet())
+        {
+            List<String> defLis = list.get(i);
+            for(String j: defLis) {
+                tableModel.addRow(new Object[]{i,j});
+            }
+        }
     }
 
 
@@ -37,7 +47,7 @@ public class GUI_Findslang extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Find slang");
+        jButton1.setText("Delete");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -96,35 +106,46 @@ public class GUI_Findslang extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
         if (jTextField1.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "vui lòng điền slang");
         }else{
+
             slangmanager.Load_Data_Slangword();
-            tableModel.setRowCount(0);
-            String slang_search = jTextField1.getText();
             HashMap<String, List<String>> list=new HashMap<String,List<String>>();
             list= slangmanager.list;
-            List<String> defi = list.get(slang_search);
+            tableModel.setRowCount(0);
+            String slang_search = jTextField1.getText();
             slangmanager.savehistory(true, slang_search);
-            String cout="";
-            if(defi==null){
-                JOptionPane.showMessageDialog(this, "Không có slang thỏa mãn");
-            }
-            else{
-                for(int i=0;i<defi.size();i++){
-                    System.out.print("Definition: " + defi.get(i) +"\n");
-                    tableModel.addRow(new Object[]{slang_search,  defi.get(i)});
-
+            if(!list.containsKey(slang_search)){
+                JOptionPane.showMessageDialog(this, "Không có slan thỏa mãn");
+            }else {
+                int option = JOptionPane.showConfirmDialog(this, "Bạn muốn xóa: " + slang_search );
+                if (option == 0) {
+                    list.remove(slang_search);
+                    slangmanager.save_file_hashmap(slangmanager.File_Name, list);
                 }
-
+                else{
+                    for (String i: list.keySet())
+                    {
+                        List<String> defLis = list.get(i);
+                        for(String j: defLis) {
+                            tableModel.addRow(new Object[]{i,j});
+                        }
+                    }
+                }
+                for (String i: list.keySet())
+                {
+                    List<String> defLis = list.get(i);
+                    for(String j: defLis) {
+                        tableModel.addRow(new Object[]{i,j});
+                    }
+                }
             }
+
         }
 
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -135,3 +156,4 @@ public class GUI_Findslang extends javax.swing.JFrame {
     private java.awt.Label label1;
     // End of variables declaration//GEN-END:variables
 }
+

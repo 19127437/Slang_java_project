@@ -1,4 +1,3 @@
-BBC`British Broadcasting Corporation
 BBB`Bugging Beyond Belief
 BBE`Babe
 GLOTR`Good Luck On The Rebuild
@@ -51,6 +50,7 @@ SEP`Somebody Else's Problem
 SES`Marijuana
 TFTI`Thanks For The Info
 B`Be
+C`See| Computer language| Speed of light
 PKIT`Please Keep In Touch
 SET`Division of a gang
 E`Ecstasy

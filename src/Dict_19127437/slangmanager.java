@@ -156,9 +156,9 @@ public class slangmanager {
         List<String> b = new ArrayList<String>();
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(new File(file)))) {
             List<String> array = new ArrayList<>();
-            for (String i: list.keySet()) {
+            for (String i: h.keySet()) {
                 bw.write(i +"`");
-                array= list.get(i);
+                array= h.get(i);
                 if(array.size()==1){
                     bw.write(array.get(0));
                 }
@@ -180,7 +180,7 @@ public class slangmanager {
     }
 
     public static void savefile_list() {
-        save_file_hashmap(File_save, list);
+        save_file_hashmap(File_Name, list);
     }
 
     public static int Input(){

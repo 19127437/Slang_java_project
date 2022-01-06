@@ -5,6 +5,13 @@
  */
 package Dict_19127437;
 
+import javax.swing.*;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+
 /**
  *
  * @author USER
@@ -57,6 +64,11 @@ public class GUI_19127437_slangword extends javax.swing.JFrame {
         });
 
         jButton4.setText("Delete_slang");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("Edit_slang");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -149,6 +161,10 @@ public class GUI_19127437_slangword extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_// ActionPerformed
+        // TODO add your handling code here:
+        new GUI_Delete().setVisible(true);
+    }
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
         new GUI_Showhistory().setVisible(true);
@@ -161,6 +177,42 @@ public class GUI_19127437_slangword extends javax.swing.JFrame {
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
+        HashMap<String,List<String>> list=new HashMap<String,List<String>>();
+        List<String> arr = new ArrayList<>();
+        try(BufferedReader br = new BufferedReader(new FileReader(new File(slangmanager.File_root)))) {
+            String str=null;
+            while (true) {
+                str = br.readLine();
+                if (str == null)
+                    break;
+                arr.add(str);
+
+            }
+        }
+        catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        for(int i=0;i<arr.size();i++){
+            if(arr.get(i).contains("`")) {
+                String[] array = arr.get(i).split("`");
+                String[] array_defi = array[1].split("\\|");
+                List<String> defi = Arrays.asList(array_defi);
+                list.put(array[0], defi);
+            }
+        }
+        slangmanager.save_file_hashmap(slangmanager.File_Name, list);
+        for (String i: list.keySet())
+        {
+            List<String> defLis = list.get(i);
+            for(String j: defLis) {
+                System.out.print( i + "+ " + j +"\n");
+            }
+        }
+        JOptionPane.showMessageDialog(this, "Đã reset xong");
+        new GUI_Show().setVisible(true);
+
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
