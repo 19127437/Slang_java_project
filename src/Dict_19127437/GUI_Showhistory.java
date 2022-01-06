@@ -29,6 +29,7 @@ public class GUI_Showhistory extends javax.swing.JFrame {
         label1 = new java.awt.Label();
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        JBreset = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -58,6 +59,12 @@ public class GUI_Showhistory extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
+        JBreset.setText("Delete history");
+        JBreset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBresetActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
                 new Object [][] {
@@ -80,7 +87,9 @@ public class GUI_Showhistory extends javax.swing.JFrame {
                                                 .addGap(58, 58, 58)
                                                 .addComponent(jButton1)
                                                 .addGap(45, 45, 45)
-                                                .addComponent(jButton2))
+                                                .addComponent(jButton2)
+                                                .addGap(40, 40, 40)
+                                                .addComponent(JBreset))
                                         .addGroup(layout.createSequentialGroup()
                                                 .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -101,7 +110,8 @@ public class GUI_Showhistory extends javax.swing.JFrame {
                                 .addGap(43, 43, 43)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(jButton1)
-                                        .addComponent(jButton2))
+                                        .addComponent(jButton2)
+                                        .addComponent(JBreset))
                                 .addGap(18, 18, 18)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(28, 28, 28))
@@ -113,6 +123,16 @@ public class GUI_Showhistory extends javax.swing.JFrame {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
 
+    }
+
+    private void JBresetActionPerformed(java.awt.event.ActionEvent evt) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(new File(slangmanager.File_history)))) {
+            bw.write("");
+            bw.newLine();
+        }catch (IOException e) {
+            System.out.print("Update fail!!!");
+            e.printStackTrace();
+        }
     }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
@@ -197,11 +217,42 @@ public class GUI_Showhistory extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(GUI_Find.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(GUI_Find.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(GUI_Find.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(GUI_Find.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
 
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new GUI_Showhistory().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton JBreset;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
