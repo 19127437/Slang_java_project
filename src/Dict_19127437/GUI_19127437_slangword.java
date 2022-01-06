@@ -167,11 +167,11 @@ public class GUI_19127437_slangword extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        new GUI_Find().setVisible(true);        // TODO add your handling code here:
+        new GUI_Findslang().setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        new GUI_DEFI().setVisible(true);
+        new GUI_FinDefi().setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
