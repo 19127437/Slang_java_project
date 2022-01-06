@@ -48,6 +48,11 @@ public class GUI_19127437_slangword extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jButton1.setText("Add_slang");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Find_definition");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -160,7 +165,9 @@ public class GUI_19127437_slangword extends javax.swing.JFrame {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
-
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        new GUI_Addslang().setVisible(true);
+    }
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_// ActionPerformed
         // TODO add your handling code here:
         new GUI_Delete().setVisible(true);
@@ -203,13 +210,6 @@ public class GUI_19127437_slangword extends javax.swing.JFrame {
             }
         }
         slangmanager.save_file_hashmap(slangmanager.File_Name, list);
-        for (String i: list.keySet())
-        {
-            List<String> defLis = list.get(i);
-            for(String j: defLis) {
-                System.out.print( i + "+ " + j +"\n");
-            }
-        }
         JOptionPane.showMessageDialog(this, "Đã reset xong");
         new GUI_Show().setVisible(true);
 
@@ -217,6 +217,7 @@ public class GUI_19127437_slangword extends javax.swing.JFrame {
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
+        new GUI_Quiz1().setVisible(true);
        
     }//GEN-LAST:event_jButton9ActionPerformed
 

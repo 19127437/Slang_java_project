@@ -292,7 +292,7 @@ public class slangmanager {
         }else{
             list.put(slang,list_defi);
         }
-        savefile_list();
+     //   savefile_list();
     }
     public static  void edit_slangword(){
         Scanner scanner = new Scanner(System.in);
@@ -514,8 +514,7 @@ public class slangmanager {
     }
     public static void Question(){
 
-        //String random=getrandom();
-        String random="BAC";
+        String random=getrandom();
         Random r = new Random();
         List<String> Ans= list.get(random);
 
