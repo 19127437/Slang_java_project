@@ -56,13 +56,13 @@ public class GUI_Edit extends javax.swing.JFrame {
 
         label2.setAlignment(java.awt.Label.CENTER);
         label2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        label2.setText("Definition");
+        label2.setText("Slang");
 
 
 
         label3.setAlignment(java.awt.Label.CENTER);
         label3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        label3.setText("Slang");
+        label3.setText("Definition");
 
 
         jButton2.setText("change_slang");
