@@ -24,11 +24,13 @@ public class GUI_random extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("GUI_Random_19127437");
+        setLocationRelativeTo(null);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18));
         jLabel1.setText("jLabel1");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 20));
         jLabel2.setText("jLabel1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -71,9 +73,6 @@ public class GUI_random extends javax.swing.JFrame {
             m_m=10;
         }
         var slang_new = (d_m_y + m_m) % slangmanager.list.size();
-//        System.out.print(d_m_y +"\n");
-//        System.out.print(m +"\n");
-        //get word
         var slang = slangmanager.list.keySet().toArray(new String[0])[slang_new];
         jLabel1.setText("Từ slang ngày " + dt.format(dNow) +" sẽ là:");
 

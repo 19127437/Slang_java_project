@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Dict_19127437;
 
 import javax.swing.*;
@@ -14,9 +10,7 @@ import java.util.List;
 
 public class GUI_19127437_slangword extends javax.swing.JFrame {
 
-    /**
-     * Creates new form GUI_19127437_slangword
-     */
+
     public GUI_19127437_slangword() {
         initComponents();
     }
@@ -34,7 +28,9 @@ public class GUI_19127437_slangword extends javax.swing.JFrame {
         jButton9 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
 
+        setTitle("GUI_slang_19127437");
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
 
         jButton1.setText("Add_slang");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -156,8 +152,8 @@ public class GUI_19127437_slangword extends javax.swing.JFrame {
         pack();
     }
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {
+        new GUI_Edit().setVisible(true);
     }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         new GUI_Addslang().setVisible(true);
@@ -165,17 +161,11 @@ public class GUI_19127437_slangword extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_// ActionPerformed
         new GUI_Delete().setVisible(true);
     }
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        new GUI_Showhistory().setVisible(true);
-
-    }
-
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) { new GUI_Showhistory().setVisible(true); }
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         new GUI_random().setVisible(true);
     }
-
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {
         HashMap<String,List<String>> list=new HashMap<String,List<String>>();
         List<String> arr = new ArrayList<>();
         try(BufferedReader br = new BufferedReader(new FileReader(new File(slangmanager.File_root)))) {
@@ -207,24 +197,12 @@ public class GUI_19127437_slangword extends javax.swing.JFrame {
 
     }
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        new GUI_Quiz1().setVisible(true);
-       
-    }
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        new GUI_Quiz2().setVisible(true);
-
-    }
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
-        new GUI_Findslang().setVisible(true);
-    }
-
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {new GUI_Quiz1().setVisible(true);}
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {new GUI_Quiz2().setVisible(true);}
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) { new GUI_Findslang().setVisible(true);}
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
         new GUI_FinDefi().setVisible(true);
     }
-
-
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
@@ -235,5 +213,4 @@ public class GUI_19127437_slangword extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
-
 }

@@ -1103,7 +1103,7 @@ T_T`Crying
 HORNY`Turned on
 WALAHI`I swear to God
 :(`Unhappy| sad
-:)`Happy|Hahahaha
+:)`Happy
 :*`Kiss
 :/`Sarcasm
 :0`Surprised| shocked
@@ -2258,7 +2258,6 @@ JLYK`Just Letting You Know
 RCON`Remote Console
 ASAS`As Soon As Sensible
 VIN`Vehicle Identification Number
-Frustrated| angry| upset| in pain| khanh dep trai`Frustrated| angry| upset| in pain| khanh dep trai
 ASAT`As Simple As That
 DARPA`Defense Advanced Research Projects Agency
 VIP`Very Important Person
@@ -2691,7 +2690,6 @@ C'MON`Come On
 SGTM`Sounds Good To Me
 IITYWTMWYBMAD`If I Tell You What This Means Will You Buy Me a Drink?
 FIO`Figure It Out
-:OOO`Happy
 FIT`Good lokking| hot| sexy
 BOGIE`Cigarette
 WKD`Wicked
@@ -4270,7 +4268,6 @@ INRI`Iesus Nazarenus Rex Iudaeorum| Jesus of Nazareth King of the Jews
 YKYLM`You Know You Love Me
 INTP`Introverted iNtuitive Thinking Perceiving (personality type indicator)
 RADAR`Radio Detection And Ranging
-Happy|hahaha`Happy|hahaha
 IAWTCSM`I Agree With This Comment So Much
 VNSFW`Very NSFW
 NAIL IT`Complete| get right
@@ -4764,7 +4761,6 @@ DRAW`Cannabis
 LAA`Lad| mate
 YEHET`Yes In Sehun's Happy Mode
 LAD`Guy
-Happy| haha`Happy| haha
 LAG`Slow response
 LAL`Laughing A Lot/Little
 LAK`Love And Kisses
@@ -4999,8 +4995,8 @@ HIPSTER`Person who is HIP
 M2D`Make my day
 TOTES`Totally
 ({)(})`Two People Hugging
+*O*`Confused| surprised| shocked
 LQI`Laughing Quietly Inside
-*O*`Confused| Khanh dep trai| shocked
 ;P;`Misspelling of LOL
 DARN`Damn
 LQL`Laughing Quite Loudly
@@ -5777,6 +5773,7 @@ CHUNDER`Be sick| vomit
 JEAL`Jealous
 DCOI`Don't Count On It
 KYFC`Keep Your Fingers Crossed
+>.<`Frustrated| angry| upset| in pain
 >.>`Suspicious| wary
 CLUBHEAD`Person who goes to clubs a lot
 NO1`No-One
@@ -6756,7 +6753,6 @@ IDKE`I Don't Know Either
 ROFC`Rolling On Floor Crying
 /:)`Flirtation |Sign Of Suspicion
 SAFE`Something or someone good
-Happy| hahaa`Happy| hahaa
 SAFM`Stay Away From Me
 FLBP`Future Lower Back Problems
 HAGE`Have A Good Evening
@@ -7097,7 +7093,6 @@ AAT`And Another Thing| At All Times
 RCH`A very small unit of measurement
 SAVVY`Do you understand?| Knowledgeable| well informed
 TIGHT`Close| Miserly
-Happy|haha`Happy|haha
 ABC`American Born Chinese
 RCT`Roller Coster Tycoon
 ABD`Already Been Done

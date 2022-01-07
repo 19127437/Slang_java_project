@@ -13,10 +13,6 @@ public class GUI_Findslang extends javax.swing.JFrame {
         initComponents();
         tableModel = (DefaultTableModel) jTable1.getModel();
     }
-
-
-    @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         label1 = new java.awt.Label();
@@ -26,6 +22,8 @@ public class GUI_Findslang extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("GUI_Find_slang_19127437");
+        setLocationRelativeTo(null);
 
         label1.setAlignment(java.awt.Label.CENTER);
         label1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -89,13 +87,11 @@ public class GUI_Findslang extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {  }
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
         if (jTextField1.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "vui lòng điền slang");
         }else{
@@ -120,18 +116,10 @@ public class GUI_Findslang extends javax.swing.JFrame {
             }
         }
 
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    }
     private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private java.awt.Label label1;
-    // End of variables declaration//GEN-END:variables
 }

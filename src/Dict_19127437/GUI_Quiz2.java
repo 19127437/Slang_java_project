@@ -34,6 +34,8 @@ public class GUI_Quiz2 extends javax.swing.JFrame {
         button1 = new java.awt.Button();
 
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("GUI_Quiz_find_slang_19127437");
+        setLocationRelativeTo(null);
 
         textField1.setText("textField1");
 
@@ -112,7 +114,7 @@ public class GUI_Quiz2 extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>
+    }
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {
         repaint();
         jRadioButton1.setEnabled(true);

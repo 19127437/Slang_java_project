@@ -30,6 +30,8 @@ public class GUI_Addslang extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("GUI_Add_slang_19127437");
+        setLocationRelativeTo(null);
 
         label1.setAlignment(java.awt.Label.CENTER);
         label1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N

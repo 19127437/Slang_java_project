@@ -36,6 +36,8 @@ public class GUI_Delete extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("GUI_Delete_19127437");
+        setLocationRelativeTo(null);
 
         label1.setAlignment(java.awt.Label.CENTER);
         label1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
